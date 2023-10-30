@@ -13,6 +13,7 @@ def get_amenities():
         amenity_list.append(amenity.to_dict())
         return jsonify(amenity_list)
 
+
 @app_views('/amenities/<amenity_id>', methods=['GET'], strict_slashes=False)
 def get_amenity(amenity_id):
     """Retrieves a amenity object"""
@@ -20,6 +21,7 @@ def get_amenity(amenity_id):
     if amenity is None:
         return jsonify({"error": "Not found"}), 404
     return jsonify(amenity.to_dict()), 200
+
 
 @app_views('/amenities/<amenity_id>', methods=['DELETE'], strict_slashes=False)
 def delete_amenity(amenity_id):
@@ -31,6 +33,7 @@ def delete_amenity(amenity_id):
     storage.save()
     return jsonify({}), 200
 
+
 @app_views('/amenities', methods=['POST'], strict_slashes=False)
 def create_amenity():
     """creates amenity object"""
@@ -41,6 +44,7 @@ def create_amenity():
     amenity = amenity(**request.get_json()), 201
     amenity.save()
     return jsonify(amenity.to_dict()), 201
+
 
 @app_views('/amenities/<amenity_id>', methods=['PUT'], strict_slashes=False)
 def update_amenity(amenity_id):

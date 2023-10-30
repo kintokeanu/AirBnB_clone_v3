@@ -4,7 +4,8 @@ from flask import jsonify, request
 from models import storage, city
 
 
-@app_views.route('/states/<state_id>/cities', methods=['GET'], strict_slashes=False)
+@app_views.route('/states/<state_id>/cities', methods=['GET'],
+strict_slashes=False)
 def get_cities(state_id):
     """Retrieves the list of all City objects"""
     cities = storage.all(city).values()
@@ -13,6 +14,7 @@ def get_cities(state_id):
         cities_list.append(city.to_dict())
     return jsonify(cities_list)
 
+
 @app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
 def get_city(city_id):
     """Retrieves a City object"""
@@ -20,6 +22,7 @@ def get_city(city_id):
     if city is None:
         return jsonify({"error": "Not found"}), 404
     return jsonify(city.to_dict()), 200
+
 
 @app_views.route('/cities/<city_id>', methods=['DELETE'], strict_slashes=False)
 def delete_city(city_id):
@@ -30,6 +33,7 @@ def delete_city(city_id):
     storage.delete(city)
     storage.save()
     return jsonify({}), 200
+
 
 @app_views.route('/states/<state_id>/cities', methods=['POST'], strict_slashes=False)
 def create_city(state_id):

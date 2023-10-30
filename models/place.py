@@ -55,12 +55,12 @@ class Place(BaseModel, Base):
         super().__init__(*args, **kwargs)
 
         if models.storage_t != "db":
-        @property
-        def places(self):
-            """getter for list of place instances related to the places"""
-            place_list = []
-            all_places = models.storage.all(Place)
-            for place in all_places.values():
-                if place.place_id == self.id:
-                    place_list.append(place)
-                    return place_list
+            @property
+            def places(self):
+                """getter for list of place instances related to the places"""
+                place_list = []
+                all_places = models.storage.all(Place)
+                for place in all_places.values():
+                    if place.place_id == self.id:
+                        place_list.append(place)
+                        return place_list

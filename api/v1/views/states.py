@@ -14,13 +14,14 @@ def get_states():
     return jsonify(states_list)
 
 
-@app_views.route('/states/<state_id>', methods=['GET',], strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 def get_state(state_id):
     """'retirves state object"""
     state = storage.get(State, state_id)
     if state is None:
         return jsonify({"error": "Not found"}), 404
     return jsonify(state.to_dict()), 200
+
 
 @app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
 def delete_state(state_id):

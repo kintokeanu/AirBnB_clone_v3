@@ -24,12 +24,12 @@ class Review(BaseModel, Base):
         super().__init__(*args, **kwargs)
 
         if models.storage_t != "db":
-        @property
-        def reviews(self):
-            """getter for list of review instances related to the reviews"""
-            review_list = []
-            all_reviews = models.storage.all(Review)
-            for review in all_reviews.values():
-                if review.place_id == self.id:
-                    review_list.append(review)
-            return review_list
+            @property
+            def reviews(self):
+                """getter for list of review instances related to the reviews"""
+                review_list = []
+                all_reviews = models.storage.all(Review)
+                for review in all_reviews.values():
+                    if review.place_id == self.id:
+                        review_list.append(review)
+                return review_list
