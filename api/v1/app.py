@@ -2,7 +2,7 @@
 """create a variable app, instance of Flask"""
 from flask import Flask, jsonify, Blueprint
 from models import storage
-from api.v1.views.index import app_views
+from api.v1.views import app_views
 import os
 
 app = Flask(__name__)
