@@ -26,7 +26,8 @@ class Review(BaseModel, Base):
         if models.storage_t != "db":
             @property
             def reviews(self):
-                """getter for list of review instances related to the reviews"""
+                """getter for list of review instances
+                related to the reviews"""
                 review_list = []
                 all_reviews = models.storage.all(Review)
                 for review in all_reviews.values():
