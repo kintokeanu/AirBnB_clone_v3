@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""get cities for every state views from storage"""
 from api.v1.views import app_views
 from flask import jsonify, request
 from models import storage, city
